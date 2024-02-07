@@ -12,3 +12,7 @@ void generate_key(char *key, int size) {
     }
     key[size] = '\0';
 }
+
+int bitoby(int bits) {
+    return bits % 8;
+}
