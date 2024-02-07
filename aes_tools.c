@@ -14,5 +14,5 @@ void generate_key(char *key, int size) {
 }
 
 int bitoby(int bits) {
-    return bits % 8;
+    return bits / 8;
 }
