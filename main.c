@@ -5,11 +5,11 @@
 #include <string.h>
 
 int main(int argc, char *argv[]) {
-    // ./main <key size> <filename>
-    if (argc < 3) {
-        printf("Usage: %s <key size> <file>\n", argv[0]);
+    // ./main <filename> <key size> <key>
+    if (argc < 4) {
+        printf("Usage: %s <file> <key size> <key>\n", argv[0]);
         return 1;
-    } else if (argc > 3) {
+    } else if (argc > 4) {
         printf("Too many arguments\n");
         return 1;
     }
@@ -22,21 +22,7 @@ int main(int argc, char *argv[]) {
     }
 
     // key size in bytes
-    int key_size = 16;
-    switch (key_size_bits) {
-    case 128:
-        key_size = 16;
-        break;
-    case 192:
-        key_size = 24;
-        break;
-    case 256:
-        key_size = 32;
-        break;
-    default:
-        key_size = 16;
-        break;
-    }
+    int key_size = bitoby(key_size_bits);
 
     // ask if they have a key or should it be generated
     unsigned char *aesKey = malloc(key_size);
